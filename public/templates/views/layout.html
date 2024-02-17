@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Blog post website created using PHP OOP and TWIG ENGING"
+    />
+    <meta name="keywords" content="CMS, PHP, OOP, TWIG" />
+    <meta name="author" content="Rachid" />
+
+    <!-- STYLE AND ICON TAGS -->
+    <link rel="stylesheet" href="{{doc_root}}\css\index.css" type="text/css" />
+    <script src="{{doc_root}}\script\script.js" defer></script>
+
+    <title>{%block title%}LAYOUT{%endblock%}</title>
+  </head>
+  <body>
+    <!-- START HEADER -->
+    {{include('includes/header.html')}}
+    <!-- END HEADER -->
+    <!-- SESSIONDATA IS FETCH IN THE PHP FILE FROM SESSION NOT FROM SESSION DIRECTLY -->
+    {%if(sessionData.message or errors.warning)%}
+    <div class="main-success-error-messages">
+      {%if(errors.warning)%}
+      <div class="message-container error-div" id="message-parent-container">
+        <p>{{errors.warning ?? ''}}</p>
+        <span class="closeButton">X</span>
+      </div>
+      {%elseif(session.message)%}
+      <div class="message-container message-div" id="message-parent-container">
+        <p>{{session.message ? session.message : ''}}</p>
+        <span class="closeButton">X</span>
+      </div>
+      {%endif%}
+    </div>
+    {%endif%}
+    <!-- START MAIN CONTENT -->
+
+    <div class="body-container">{% block content %} {% endblock %}</div>
+
+    <!-- END MAIN CONTENT -->
+    <!-- START FOOTER  -->
+    {{include('includes/footer.html')}}
+    <!-- END FOOTER -->
+  </body>
+</html>

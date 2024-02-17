@@ -1,0 +1,820 @@
+/* Font Awesome Icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+
+/* Reset some default styles */
+html {
+    box-sizing: border-box;
+}
+
+/*==== STYLING SUCCESS AND ERROR MESSAGE AT LAYOUT PAGE =====*/
+.main-success-error-messages{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: .5rem;
+    padding: .8rem;
+
+}
+.message-container{
+    display: flex;
+    width: 50%;
+    padding: .6rem;
+    margin-bottom: .3rem;
+    position: relative;
+}
+.message-container span{
+    position: absolute;
+    right: .5rem;
+    font-size: larger;
+    font-weight: 600;
+    cursor: pointer;
+    color: #ddd;
+    
+}
+.error-div{
+    color: whitesmoke;
+    background-color: rgba(255, 0, 0, 0.466);
+}
+
+.message-div{
+    color: whitesmoke;
+    background-color: rgba(0, 128, 0, 0.671);
+}
+
+/*===== END  OF STYLING THE MESSAGE DIVS ====*/
+/*====STYLING MAIN CONTENT ====*/
+.main-content{
+    background-color: #0056b3;
+}
+.title{
+    color: red;
+}
+body, ul, li {
+    margin: 0;
+    padding: 0;
+    
+}
+.body-container{
+    background-color: rgba(245, 245, 245, 0.048);
+    min-height: 100vh;
+}
+
+/* Style for the header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px; 
+}
+.nav {
+    width: 100%;
+    /* height: 100%; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+    width: 20%;
+    text-align: center;
+    background-color: whitesmoke;
+    color: #333;
+    border-radius: 50%;
+    text-transform: uppercase;
+}
+.menu {
+    width: 60%;
+    height: 3rem;
+    max-height: 3.5rem;
+    display: flex;
+    justify-content: space-around;
+}
+.menu .profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu .profile a:not(:first-child){
+    margin-left: 2rem;
+}
+.categories-nav ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: end;
+    height: 100%;
+    margin-right: 2rem;
+}
+header .profile a{
+    text-decoration: none;
+    color: whitesmoke;
+}
+header ul li {
+    /* margin-right: 10px; */
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: white;
+    /* padding: 1.5em 2.5em; */ 
+}
+
+header ul li:not(:last-child) {
+    margin-right: 1rem;
+}
+
+header ul li a , .menu .profile a {
+    text-decoration:none;
+    color: whitesmoke;
+    transition: all .7s ease-in-out;
+    padding: .5em .8em;
+    /* outline: 10px solid transparent; */
+}
+header ul li a:hover , .menu .profile a:hover{
+    background-color: orange;
+    color: #333;
+    outline: 10px solid transparent; /*IT GIVES THE BUTTON NICE TRANSPARANT 
+                                        BORDERS WHICH DESAPPEAR AT THE END OF HOVER*/
+}
+/*====STYLING MESSAGE TEXT =====*/
+.message-text{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.message-text.display-state{
+    display: none;
+}
+.message-text-line{
+    background-color: rgba(32, 170, 14, 0.61);
+    display: block;
+    position: relative;
+    width: 60%;
+    height: 2rem;
+    text-align: start;
+    padding: 1.2rem 1rem;
+    font-size: .8rem;
+    
+}
+.message-text-line .close-x{
+    color: black;
+    position: absolute;
+    right: 1rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+}
+/*====END STYLING MESSAGE TEXT ===*/
+.search-result{
+    font-size: larger;
+    font-weight: 600;
+    text-align: center;
+
+}
+/* Style for the content section */
+.content {
+    width: 80%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 15px;
+    margin: 0 auto;
+    
+}
+.content-height{
+    height: 100vh;
+}
+.content .article:nth-child(2n) {
+    background-color: rgba(128, 128, 128, 0.219);
+}
+.content .article:nth-child(2n +1) {
+    background-color: rgba(0, 0, 255, 0.199);
+}
+.content .article-image{
+    width: 100%;
+}
+
+.article-card{
+    background-color: blue;
+    width: 100%;
+}
+.article-image:hover img{
+    transform: scale(1.2);
+}
+.article-image img{
+    transition: all .5s ease-in-out;
+}
+.article-image{
+    overflow: hidden;
+}
+.article-image img {
+  
+    width: 100%;
+    height: 10rem;
+    
+}
+
+.article h2 a {
+    text-decoration: none;
+    color: blue;
+}
+
+.article {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 15px 2px gray;
+    max-width: 30rem;
+    width: 20rem;
+
+}
+
+.article h2 {
+    font-size: 18px;
+    color: blue;
+    letter-spacing: .1em;
+}
+
+.article p {
+    font-size: 14px;
+    margin-top: 10px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    letter-spacing: .2em;
+}
+
+/* Style for the footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    height: 10rem;
+   
+}
+
+/* STYLING FOOTHER*/
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-logo img {
+    max-width: 100px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+.footer-social ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-social li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.footer-social a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 20px;
+}
+
+.footer-info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer-info p {
+    margin: 5px 0;
+}
+
+/* END STYLING FOOTER */
+
+/*==== STYLING SINGLE ARTICLE====*/
+ /* Basic CSS styling for the article container */
+ .article-container {
+    max-width: 800px;
+    height:50rem;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    
+}
+.img-container{
+    display: flex;
+    justify-content: center;
+
+}
+/* Style for the article image */
+.article-image {
+    max-width: 100%;
+    width: 80%;
+    /* height: 15rem; 
+    height: auto; */
+    margin-bottom: 20px;
+    
+}
+
+/* Style for the article title */
+.article-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Style for the article content */
+.article-content {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    height: 20rem;
+    overflow-wrap: break-word; 
+    border: 1px solid rgba(128, 128, 128, 0.432);
+    padding: .5rem;
+    box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.37);
+    
+}
+
+/* Style for the created date */
+.created-date {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Style for the author name */
+.author-name {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Style for the category name */
+.category-name {
+    font-size: 16px;
+    color: #007BFF;
+}
+.edit-artile{
+    padding: 1rem 0;
+    text-align: center;
+}
+.edit-artile a{
+    text-decoration: none;
+    font-size: larger;
+    color: white;
+    background-color: rgba(0, 0, 255, 0.548);
+    padding: .5rem 1.5rem;
+}
+.edit-artile a:hover{
+    background-color:blue;
+    outline: 2px solid blue;
+    outline-offset: .2rem ;
+}
+/*======END OF SINGLE ARTICLE*/
+
+/*====STYLING INDEX PAGE====*/
+.index-article-summary{
+    padding: .5rem;
+    border: 1px solid rgba(128, 128, 128, 0.377);
+    box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.301);
+}
+/*=====END INDEX PAGE STYLING====*/
+
+/*=======STYLING CREATE ARTICLE FORM=======*/
+.body-form-container{
+    width: 100%;
+}
+.form-main-container{
+    width: 95%;
+    margin: 0 auto;
+    padding: 2rem;
+}
+.section-2 .article-title{
+    width: 20rem;
+    height: 2rem;
+    
+}
+.form-main-container .alt-text{
+    text-align: center;
+}
+.form-main-container input:focus {
+    outline: 2px solid #007bff; /* Change the color and width to your preference */
+    outline-offset: 2px;/* Add some space between the element and the border */
+    /* outline-color: transparent; REMOVES THE BORDER SHOWING INSIDE THE INPUT IN IT HAS FOCUS */
+}
+.form-main-container textarea:focus, .selections select {
+    outline-color: transparent;
+}
+
+.form-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.image-container{
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+}
+.image-container img{
+    width: 70%;
+}
+.empty-image-container{
+    background-image: url(../img/site/empty-image.jpg);
+    height: 15rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+}
+.image-alt-text input{
+    margin: 1rem;
+    height: 2rem;
+    width: 80%;
+    border-color: transparent;
+}
+.section {
+    height: auto;
+    background-color:#33333328;
+    padding: 1rem;
+}
+.section-1 .buttons{
+display: flex;
+justify-content: space-around;
+align-items: center;
+height: 5rem;
+
+}
+.section-1 .buttons a , .section-1 input[type="submit"], .section-3 input{
+   text-decoration: none;
+   font-size: large;
+   color: white;
+   background-color: gray;
+   padding: .5rem 1.2rem;
+   transition: background-color .2s ease-in-out;
+}
+.section-1 .buttons a:hover , .section-1 input[type="submit"]:hover, .section-3 input:hover{
+    background-color: orange;
+    color: black;
+    outline: 5px solid orange;
+    outline-offset: 2px;
+ }
+.section-2{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+}
+.section-2 .input, .section-2 textarea{
+    width: 80%;
+    border-color: transparent;
+}
+.section-2 div:not(:last-child){
+    padding-bottom: 1rem;
+}
+
+.selections {
+    width: 100%;
+}
+.selections .selections-dropdowns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: start;
+    padding: 1rem 0;
+}
+.selections #author_id, .selections #category_id{
+    width: 10rem;
+    background-color: rgba(222, 184, 135, 0.349);
+    height: 1.5rem;
+    border-color: transparent;
+}
+.section-2 .articleTitle{
+    width: 20rem;
+    height: 2rem; 
+    border-color: transparent;
+}
+.section-2 .summary{
+    width: 100%;
+    height: 5rem;
+    text-align: center;
+}
+.section-2 #articleSummary{
+    width: 70%;
+    height: 5rem;
+}
+.section-2 .content{
+    width: 100%;
+}
+.section-2 #articleContent{
+    width: 80%;
+     
+}
+.section-3{
+    background-color: white;
+    text-align: end;
+    margin: 1rem 0;
+}
+.section-3 input{
+    border-color: transparent;
+}
+
+.published-radio-container{
+    padding: .5rem;
+}
+/*=======END OF CREATE ARTICLE FORM*/
+/*========STYLING AUTHOR PROFILE PAGE====*/
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.profile-container {
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.profile-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    display: block;
+}
+
+.profile-buttons {
+    margin: 20px 0;
+}
+
+.update-button, .create-button , #submit, button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    max-width: 15rem;
+    text-transform: uppercase;
+    font-size: large;
+    font-weight: 600;
+    transition: all .3s ease-in-out;
+}
+.update-button, .create-button{
+    font-weight: 300;
+}
+.login:hover, .register:hover, .update-button:hover, .create-button:hover, #submit:hover, button:hover {
+    background-color: transparent;
+    color: blue;
+    outline: 3px solid #007bff;
+    outline-offset: 4px;
+}
+
+.articles {
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.article {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+h3 {
+    margin: 0;
+}
+
+p {
+    margin: 5px 0;
+}
+
+/*=======END STYLING AUTHOR PROFILE ====*/
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+    /* color: white; */
+  }
+  
+  .hover-underline-animation::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: white;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .hover-underline-animation:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+/*=====STYLING REGISTER FORM =====*/
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+/*====END OF STYLING REGISTER====*/
+
+/*=-=====STYLING THE LOGIN FORM===*/
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+    width: 100%;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+/*=====END OF STYLING LOGIN FORM===*/
+
+/*=====FOR SELECTED CATEGORY====*/
+.active {
+    background-color: orange;
+}
+
+/*===STYLE OF SEARCH BAR====*/
+.search-container{
+    width: 90%;
+    height: 7rem;
+    display: flex;
+   justify-content: center;
+   align-content: center;
+}
+.search-container form {
+    max-width: 100%;
+    width: 25rem;
+    text-align: center;
+}
+.search-container form input {
+    width: 90%;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+.search-container form input:focus {
+    outline: none;
+}
+.article-card-search a , .author-category-link{
+    text-decoration: none;
+    font-size: 1rem;
+    color: #007BFF;
+    text-transform: capitalize;
+}
+.article-card-search a:hover , .author-category-link:hover {
+    color: #0056b3;
+}
+.span-text {
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.836);
+}
+.article-card-search-title{
+    transition: all 1s ease-in-out;
+}
+.article-card-search-title:hover{
+    color: #333;
+    letter-spacing: .2rem;
+    text-decoration: underline;
+}
+/*====END OF SEARCH BAR STYLE====*/
+
+/*====STYLE FORGOT PASSWORD====*/
+.container .forgot-password-link{
+    
+    text-align: center;
+    margin: .5rem 0;
+}
+/*====END FORGOT PASSWORD====*/
+.page-not-found{
+    height: 80vh;
+    margin-top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.page-not-found .body-container{
+ font-size: clamp(3rem, 50%, 10rem);
+ width: 80%;
+ background-color: rgba(0, 0, 255, 0.24);
+ text-align: center;
+ box-shadow: 10px 20px 10px gray ;
+}

@@ -1,0 +1,50 @@
+
+<header>
+    <div class="nav">
+        <div class="logo">
+            <a href="{{doc_root}}">
+                <h4>Company Logo</h4>
+            </a>
+
+        </div>
+        <div class="menu">
+            <div class="profile">
+                <a href="{{doc_root}}" class="hover-underline-animation">HOME</a>
+                
+                  {% if(session.id == 0)%}
+                    <a href="{{doc_root}}/pages/auth/login.php" class="hover-underline-animation">Login</a>
+                    <a href="{{doc_root}}/pages/auth/register.php" class="hover-underline-animation">Register</a>
+                  {%else%}
+                <span>Welcome, {{ session.userName }}!</span><br />
+                {%if(session.role == 'admin')%}
+                <a href="{{doc_root}}/admin/dashboard.php" class="hover-underline-animation">Dashboard</a>
+                {%elseif(session.role == 'member')%}
+                    <a href="{{doc_root}}/pages/member/create-article.php" class="hover-underline-animation">CREATE</a>
+                    <!-- DOC_ROOT IS THE PATH FROM ROOT OF THE APPLICATION TO THE PUBLIC FILES ADD THIS IS THE CORRECT PATH 
+                    TO SERVE PUBLIC FILE TODO:MODEFY APP_ROOT WITH DOC_ROOT -->
+                    <a href="{{doc_root}}/pages/member/profile.php" class="hover-underline-animation">PROFILE</a>
+                    {%endif%}
+                    <a href="{{doc_root}}/pages/auth/logout.php" class="hover-underline-animation">Logout</a>
+                    
+                {%endif%}
+            </div>
+            <div class="categories-nav">
+
+                <ul>
+                    {% for category in categories%}
+                        <li><a href="{{doc_root ~ '/pages/articles-by-category.php?id=' ~ category.id}}" {{ (category.id == section) ? 'class = "active"' : '' }}>{{category.name}}</a></li>
+                   {%endfor%}
+                    <!-- Add more categories as needed -->
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="search-container">
+        <form action="{{doc_root}}/pages/search.php" method="GET">
+            <input type="text" placeholder="Search..." name="term" />
+            <button><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    </div>
+  </header>

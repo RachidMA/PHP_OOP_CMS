@@ -1,0 +1,10 @@
+{%extends 'layout.html'%} {%block title%} SEARCH PAGE {%endblock%} {%block
+content%} {%if(count ==0)%}
+<p class="text-center search-result">No results found for "{{term}}"</p>
+{%else%}
+<p class="search-result">{{count}} results found.</p>
+<div class="content" id="search_results">
+  {%for article in articles%} {%
+  include('includes/display-articles-container.html') %} {%endfor%}
+</div>
+{%endif%} {%endblock%}

@@ -1,0 +1,26 @@
+{% extends 'layout.html' %} {% block title %} INDEX.HTML PAGE {% endblock %}
+{%block content %}
+
+<div class="profile-container">
+  <img
+    src="{{doc_root}}{{ author.image_path ? '/uploads/profile/' ~ author.image_path :  '/img/profile-empty.png' }}"
+    alt="{{author.imageAlt ? author.imageAlt : 'Profile Image'}}"
+  />
+  <div class="profile-buttons">
+    <a href="edit-profile.php?id={{author.author_id}}"
+      ><button class="update-button">Update Profile</button></a
+    >
+    <a href="{{ doc_root ~ '/pages/member/create-article.php'}}"
+      ><button class="create-button">Create Article</button></a
+    >
+  </div>
+</div>
+<!-- WRITE CONDITION TO CHECK IF USER IS ADMIN OR AUTHOR -->
+
+<div class="content">
+  {% if articles is not empty %} {% for article in articles %} {%
+  include('includes/display-articles-container.html') %} {% endfor %} {% else %}
+  {%include('includes/page-not-found.html')%} {% endif %}
+</div>
+
+{% endblock %}

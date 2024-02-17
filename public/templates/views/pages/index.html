@@ -1,0 +1,10 @@
+{% extends 'layout.html' %} {% block title %} INDEX.HTML PAGE {% endblock %} {%
+block content %}
+
+<div class="content">
+  {% if articles is not empty %} {% for article in articles %} {%
+  include('includes/display-articles-container.html') %} {% endfor %} {% else %}
+  {%include('includes/page-not-found.html')%} {% endif %}
+</div>
+
+{% endblock %}

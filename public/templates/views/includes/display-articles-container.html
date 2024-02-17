@@ -1,0 +1,29 @@
+<div class="article article-card">
+  <div class="article-image">
+    <img
+      src="{{ article.image_path ? doc_root ~ '/uploads/blogPost/' ~ article.image_path : doc_root ~ '/img/no_image.png' }}"
+      alt="BLOG-POST-IMAGE"
+    />
+  </div>
+
+  <div class=" article-{{article.article_id}}">
+    <h2>
+      <a
+        href="{{doc_root}}/pages/article.php?id={{article.article_id}}"
+        class="article-card-search-title"
+        >{{article.title}}</a
+      >
+    </h2>
+    <p class="index-article-summary">{{article.summary}}.</p>
+    <h5 class="span-text">
+      Author:
+      <a
+        href="{{doc_root}}/pages/author.php?id={{article.author_id}}"
+        class="author-category-link"
+        >{{author.author_name? author.author_name:article.author_name}}</a
+      >
+      <!-- THIS IS FOR DATE FORMAT -->
+      <p>Created AT: {{article.created_at|date('M d Y')}}</p>
+    </h5>
+  </div>
+</div>

@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+CREATE ARTICLE FORM
+{%endblock%}
+
+{%block content%}
+<div class="body-form-container">
+    <div class="form-main-container">
+        <div class="alt-text">
+            <h2>Create Article</h2>
+        </div>
+        <form action="create-article.php{{article.article_id ? '?id=' ~ article.article_id : ''}}" class="form-container" method="POST" enctype="multipart/form-data">
+            <div class="section section-1">
+                <!-- <?php if ($article['image_file']) { ?> -->
+                {% if(article.image_path)%}
+                    <div class="image-container">
+                        <img src="{{doc_root}}/uploads/{{article.image_path}}" alt="BLOG-POST-IAMGE">
+                    </div>
+                    <div class="alt-text">
+                        <p>{{article.image_alt}}</p>
+                    </div>
+                    <div class="buttons">
+                        <a href="image-alt-edit.php?id={{article.article_id}}" class="edit-alt" value="Edit Alt">Edit Alt</a>
+                        <a href="image-delete.php?id={{article.article_id}}" class="delete-img" value="Delete Image">Delete Image</a>
+                    </div>
+                    {%else%}
+                <!-- <?php } else { ?> -->
+                    <!-- IMAGE UPLOAD -->
+                    <div class="image-container empty-image-container">
+                        <input type="file" id="image" name="image" accept="image/png image/jpg image/jpeg">
+                        <p class="error-message">{{errors.image_path}}</p>
+                    </div>
+                    <div class="image-alt-text">
+                        <input type="text" name="image_alt" placeholder="Enter Image Alt Text" value="{{article.image_alt}}">
+                        <p class="error-message">{{errors.image_alt}}</p>
+                    </div>
+                    {%endif%}
+                <!-- <?php } ?> -->
+            </div>
+            <div class="section section-2">
+                
+                <div class="title">
+                    <input type="text" class="articleTitle" name="article-title" value="{{article.title}}" placeholder="Enter Title" id="articleTilte">
+                    <p class="error-message">{{errors.title}}</p>
+                </div>
+                <div class="summary">
+                    <textarea name="article-summary" id="articleSummary" placeholder="Article Summary">{{article.summary}}</textarea>
+                    <p class="error-message">{{errors.summary}}</p>
+                </div>
+                <div class="content">
+                    <!-- <label for="articleContent">Article Summary:</label><br /> -->
+                    <textarea name="article-content" id="articleContent" cols="40" rows="20" placeholder="Write You Article Here">{{article.content}}</textarea>
+                    <p class="error-message">{{errors.content}}</p>
+                </div>
+                <div class="selections">
+                    <div class="selections-dropdowns">
+                        <div class="category">
+                            <select name="category_id" id="category_name">
+                                <option selected>Select Category Name</option>
+                                <!-- <?php foreach ($categories as $category) { ?> -->
+                                    {% for category in categories%}
+                                    <option value="{{category.id}}" {{(category.id == article.category_id) ? 'selected' : '' }}>{{category.name}}</option>
+                                <!-- <?php } ?> -->
+                                {% endfor%}
+                            </select>
+                        </div>
+                        <p class="error-message">{{errors.category_id}}</p>
+                    </div>
+                    
+                </div>
+                <div class="published-radio-container">
+                    <input type="checkbox" name="published" value="1" id="published-radio" {{(article.published == 1) ? 'checked' : ''}}>
+                    <label for="published-radio">Published</label>
+                </div>
+            </div>
+            <div class="section section-3">
+                <input type="submit" value="Submit" id="submit">
+            </div>
+        </form>
+    </div>
+</div>
+{%endblock%}

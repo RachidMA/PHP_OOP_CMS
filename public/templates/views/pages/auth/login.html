@@ -1,0 +1,48 @@
+{%extends 'layout.html' %} {%block title%} LOGIN FORM {%endblock%} {%block
+content%}
+
+<div class="message-text" id="message-text">
+  <!-- TODO: CORRECT THE SESSION MESSION CODE -->
+  <!-- <p>{{errors.warning ?? ''}}</p>
+    <p>{{session.message ? session.message : ''}}</p> -->
+</div>
+<div class="content content-height">
+  <div class="container">
+    <form
+      id="login-form"
+      action="{{doc_root ~ '/pages/auth/login.php'}}"
+      method="POST"
+    >
+      <h2>Login</h2>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter Email"
+          value="{{session.email}}"
+          required
+        />
+        <span><?= $errors['email'] ?></span>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Enter Password"
+          required
+        />
+        <span><?= $errors['password'] ?></span>
+      </div>
+      <button type="submit" class="login">Login</button>
+    </form>
+    <div class="forgot-password-link">
+      <a href="forgot-password.php">Forgot Password?</a>
+    </div>
+  </div>
+</div>
+
+{%endblock%}
