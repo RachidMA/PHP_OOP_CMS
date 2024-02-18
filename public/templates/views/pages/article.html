@@ -30,7 +30,7 @@ content%}
   {%if(session.id and session.id==article.user_id and session.role =='member')%}
   <div class="edit-artile">
     <a
-      href="create-article.php?id=<?= $single_article['article_id'] ?>"
+      href="member/create-article.php?id={{article.article_id}}"
       class="edit-button"
       >Edit</a
     >

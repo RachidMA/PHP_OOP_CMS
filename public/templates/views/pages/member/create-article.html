@@ -15,7 +15,7 @@ CREATE ARTICLE FORM
                 <!-- <?php if ($article['image_file']) { ?> -->
                 {% if(article.image_path)%}
                     <div class="image-container">
-                        <img src="{{doc_root}}/uploads/{{article.image_path}}" alt="BLOG-POST-IAMGE">
+                        <img src="{{doc_root}}/uploads/blogPost/{{article.image_path}}" alt="BLOG-POST-IAMGE">
                     </div>
                     <div class="alt-text">
                         <p>{{article.image_alt}}</p>
