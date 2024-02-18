@@ -21,7 +21,7 @@
     {{include('includes/header.html')}}
     <!-- END HEADER -->
     <!-- SESSIONDATA IS FETCH IN THE PHP FILE FROM SESSION NOT FROM SESSION DIRECTLY -->
-    {%if(sessionData.message or errors.warning)%}
+    {%if(session.message or errors.warning)%}
     <div class="main-success-error-messages">
       {%if(errors.warning)%}
       <div class="message-container error-div" id="message-parent-container">

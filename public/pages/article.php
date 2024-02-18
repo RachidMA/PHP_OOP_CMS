@@ -13,13 +13,21 @@ if ($article_id) {
     //FETECH THE ARTICLE FROM DATABASE
     $articleObj = $cms->getArticle();
     try {
+
         $article = $articleObj->getArticleById($article_id);
+
+        if (!$article) {;
+            $session->setMessage('ARTICLE NOT FOUND FROM ARTICLE PAGE');
+            redirect(DOC_ROOT);
+        }
     } catch (PDOException $e) {
-        $session->setMessage('ARTICLE NOT FOUND');
-        redirect(APP_ROOT);
+        $session->setMessage('SEVER ERROR. NO ARTICLE FOUND');
+        redirect(DOC_ROOT);
     }
 }
 
-$data = [];
+$data = [
+    'article' => $article
+];
 
 echo $twig->render('/pages/article.html', $data);

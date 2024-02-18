@@ -12,6 +12,7 @@ use Dotenv\Dotenv;
 $dotenv = Dotenv::createImmutable(APPLICATION_ROOT);
 $dotenv->load();
 
+$message = $session->message ?? '';
 
 //FETCH ALL ARTICLES
 $articles = $cms->getArticle()->getAllArticles();
@@ -22,8 +23,16 @@ $data['articles'] = $articles;
 $categories = $cms->getCategory()->getAllCategories();
 $data['categories'] = $categories;
 
-$session = $cms->getSession();
+$data = [
+    'articles' => $articles,
+    'categories' => $categories,
+    'messesion' => $session
+];
 
+//CLEAR SESSION MESSAGE IF ANY
+if (isset($session->message)) {
+    $session->clearMessage();
+}
 
 // //RENDER THE HTML VIEW PAGE
 echo $twig->render('pages/index.html', $data);

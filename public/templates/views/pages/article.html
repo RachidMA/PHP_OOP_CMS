@@ -1,6 +1,41 @@
 {%extends 'layout.html'%} {%block title%} ARTICLE DETAILS{%endblock%} {%block
 content%}
 
-<h3>ARITCLE DETAILS</h3>
+<div class="article-container-main">
+  <div class="article-container">
+    <div class="img-container">
+      <img
+        class="article-image"
+        src="{{ article.image_path ? doc_root ~ '/uploads/blogPost/' ~ article.image_path : doc_root ~ '/img/no_image.png' }}"
+        alt="Article Image"
+      />
+    </div>
+    <h1 class="article-title">{{article.title}}</h1>
+    <p class="article-content">{{article.content}}</p>
+    <p class="created-date">Created At: {{article.created_at|date('M d Y')}}</p>
+    <p class="author-name author-category-link">
+      <span class="span-text">Author Name:</span>
+      <a href="{{doc_root}}/pages/articles-by-author.php" class="inside-link"
+        >{{article.author_name}}</a
+      >
+    </p>
+
+    <p class="category-name author-category-link">
+      <span class="span-text">Article Category:</span>
+      <a href="{{doc_root}}/pages/articles-by-category.php" class="inside-link"
+        >{{article.category_name}}</a
+      >
+    </p>
+  </div>
+  {%if(session.id and session.id==article.user_id and session.role =='member')%}
+  <div class="edit-artile">
+    <a
+      href="create-article.php?id=<?= $single_article['article_id'] ?>"
+      class="edit-button"
+      >Edit</a
+    >
+  </div>
+  {%endif%}
+</div>
 
 {%endblock%}

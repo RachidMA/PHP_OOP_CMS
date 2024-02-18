@@ -21,9 +21,10 @@ class Article
     {
         try {
             $sql = 'SELECT a.id as article_id, a.title, a.summary, a.content, a.user_id as author_id,
-            a.category_id, a.image_id, a.published,  a.created_at as created_at,  CONCAT(u.firstName," ", u.lastName) as author_name, i.image_path, i.image_alt 
+            a.category_id, ca.name as category_name, a.image_id, a.published,  a.created_at as created_at,  CONCAT(u.firstName," ", u.lastName) as author_name, i.image_path, i.image_alt 
             FROM articles as a 
             JOIN  users as u ON a.user_id = u.id
+            JOIN categories as ca ON a.category_id=ca.id
             LEFT JOIN images AS i ON a.image_id = i.id';
             return $this->db->runSQL($sql)->fetchAll();
         } catch (PDOException $e) {
@@ -35,9 +36,11 @@ class Article
     public function getArticleById($id)
     {
         $sql = 'SELECT a.id as article_id, a.title, a.summary, a.content, a.user_id,
-    a.category_id, a.image_id, a.published,
+    a.category_id, ca.name as category_name , a.image_id, a.published, a.created_at as created_at, CONCAT(u.firstName," ", u.lastName) as author_name,
     i.image_path, i.image_alt 
     FROM articles as a 
+    JOIN users as u ON a.user_id = u.id
+    JOIN categories as ca ON a.category_id=ca.id
     LEFT JOIN images AS i ON a.image_id = i.id 
     WHERE a.id=:id AND a.published IS NOT NULL';
 

@@ -22,6 +22,14 @@
         class="author-category-link"
         >{{author.author_name? author.author_name:article.author_name}}</a
       >
+      <p class="category-name author-category-link">
+        <span class="span-text">Article Category:</span>
+        <a
+          href="{{doc_root}}/pages/articles-by-category.php"
+          class="inside-link"
+          >{{article.category_name}}</a
+        >
+      </p>
       <!-- THIS IS FOR DATE FORMAT -->
       <p>Created AT: {{article.created_at|date('M d Y')}}</p>
     </h5>

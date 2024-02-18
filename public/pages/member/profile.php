@@ -12,13 +12,8 @@ $user_id = $session->id ?? '';
 
 $data = [];
 
-//CHECK IF SESSION HAS MESSAGE
-$message = $session->message ?? '';
-$data = [
-    'sessionData' => [
-        'message' => $message
-    ]
-];
+
+
 //CLEAR SESSION MESSAGE
 $session->clearMessage();
 if ($user_id) {
@@ -42,5 +37,8 @@ if ($user_id) {
         echo $e->getMessage();
     }
 }
+$data['session'] = $session;
 
+
+$session->clearMessage();
 echo $twig->render('pages/member/profile.html', $data);

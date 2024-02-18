@@ -56,7 +56,7 @@ body, ul, li {
 }
 .body-container{
     background-color: rgba(245, 245, 245, 0.048);
-    min-height: 100vh;
+    padding-bottom: 1rem;
 }
 
 /* Style for the header */
@@ -172,6 +172,10 @@ header ul li a:hover , .menu .profile a:hover{
 
 }
 /* Style for the content section */
+/*===== STYLING ARTICLE DETAILS =====*/
+.article-container-main{
+    padding-top: 1rem;
+}
 .content {
     width: 80%;
     padding: 20px;
@@ -241,6 +245,15 @@ header ul li a:hover , .menu .profile a:hover{
     margin-top: 10px;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     letter-spacing: .2em;
+}
+p .inside-link{
+    text-decoration: none;
+    color: #0056b3;
+}
+p .inside-link:hover{
+    color: gray;
+    text-decoration:underline;
+    font-weight: 600;
 }
 
 /* Style for the footer */
@@ -323,7 +336,7 @@ footer {
  /* Basic CSS styling for the article container */
  .article-container {
     max-width: 800px;
-    height:50rem;
+    height:100%;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -818,3 +831,5 @@ button:hover {
  text-align: center;
  box-shadow: 10px 20px 10px gray ;
 }
+
+
