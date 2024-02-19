@@ -4,7 +4,8 @@ define('AP_ROOT', dirname(__DIR__, 3));
 
 require AP_ROOT . '/src/boostrap.php';
 
-
+is_loggedIn($session->id);
+isMember($session->role);
 
 
 //IN CASE OF UPDATING THE ARTICLE
@@ -46,6 +47,8 @@ if ($id) {
     $article = $cms->getArticle()->getArticleById($id);
     if (!$article) {
         redirect(DOC_ROOT . '/pages/page-not-found.php', response_code: 404);
+    } else {
+        unset($article['category_name'], $article['author_name'], $article['created_at']);
     }
 }
 
@@ -56,7 +59,8 @@ $section = $article['category_id'] ? $article['category_id'] : null;
 //FETCH ALL CATEGORIES
 $categories = $cms->getCategory()->getAllCategories();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    var_dump('POST METHOD: ');
+
+
     if (isset($_FILES['image'])) {
         $errors['image_file'] = ($_FILES['image']['error'] === 1) ? 'FILE TOO BIG' : '';
     }
@@ -82,7 +86,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $image_name = $_FILES['image']['name'];
             $article['image_path'] = create_image_path($image_name, UPLOADS);
             $destination = UPLOADS . 'blogPost\\' . $article['image_path'];
-            var_dump($destination);
         }
     }
     //GET THE REST OF DATA FROM THE FORM
@@ -107,6 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($invalid) {
         $errors['warning'] = 'PLEASE CORRECT MISSING DATA';
     } else {
+
         try {
             //SET DATE AND ADD NEW POST TO DATABASE
             $pdo = $cms->getDB();
@@ -127,6 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($id) {
 
                 unset($article['image_path'], $article['image_alt']);
+
                 $sql = "UPDATE articles SET 
                 title = :title,
                 summary = :summary,
@@ -158,8 +163,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         :published
                         );";
             }
+            var_dump('SQL : ', $sql);
+            echo '<br>';
+            echo '<br>';
+            echo '<br>';
+            var_dump('ARTICLE : ', $article);
             $smt = $cms->getDB()->prepare($sql);
             $result = $smt->execute($article);
+
             $cms->getDB()->commit();
             $session->setMessage('ARTICLE SUCCESSFULLY CREATED');
             redirect(DOC_ROOT . '\pages\member\profile.php');

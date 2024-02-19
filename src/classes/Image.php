@@ -25,4 +25,16 @@ class Image
             return $e->getMessage();
         }
     }
+
+    public function removeImageById(int $id): bool
+    {
+        try {
+            $sql = 'DELETE FROM images WHERE  id=:id';
+            $smt = $this->db->prepare($sql);
+            $smt->execute([':id' => $id]);
+            return true;
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
 }

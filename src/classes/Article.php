@@ -145,4 +145,39 @@ class Article
             return $e->getMessage();
         }
     }
+
+    public function setImageIdToNull(INT $articleID)
+    {
+        try {
+            $sql = 'UPDATE articles SET image_id = NULL WHERE id =:id';
+            $smt = $this->db->prepare($sql);
+            $smt->execute(["id" => $articleID]);
+
+            return true;
+        } catch (PDOException $e) {
+            echo $e->getMessage(), "\n";
+            return false;
+        }
+    }
+
+    public function getImageIdAndPath(int $article_id)
+    {
+        try {
+            $slq = 'SELECT a.image_id as image_id , i.image_path as image_path
+            FROM articles AS a
+            LEFT JOIN images AS i ON  a.image_id  = i.id
+            WHERE a.id = :id';
+            $imgData = $this->db->runSQL($slq, ['id' => $article_id])->fetch();
+            var_dump($imgData);
+
+            // If no data is found in the database it returns null
+            if (!$imgData) {
+                return null;
+            } else {
+                return $imgData;
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 }
