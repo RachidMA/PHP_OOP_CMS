@@ -13,6 +13,7 @@ html {
     flex-direction: column;
     margin-top: .5rem;
     padding: .8rem;
+    
 
 }
 .message-container{
@@ -948,3 +949,17 @@ section .menu li a{
   }
 } */
 /*====END STYLE OF PAGE NOT FOUND====*/
+.profile-image-main{
+    display: flex;
+    justify-content: center;
+    padding: 1rem ;
+}
+.profile-image-form{
+    background-color: rgba(128, 128, 128, 0.233);
+    width: 50%;
+    box-shadow: 2px 3px 20px black;
+    padding: .5rem 1rem;
+}
+.profile-image-main .error-message{
+    color: red;
+}

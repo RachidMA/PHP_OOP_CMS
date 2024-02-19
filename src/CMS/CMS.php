@@ -5,6 +5,7 @@ namespace MyApp\Classes\CMS;
 use MyApp\Classes\classes\Article;
 use MyApp\Classes\classes\Category;
 use MyApp\Classes\classes\Image;
+use MyApp\Classes\classes\ProfileImage;
 use MyApp\Classes\Database\Database;
 use MyApp\Classes\classes\User;
 use MyApp\Classes\Session\Session;
@@ -17,6 +18,7 @@ class CMS
     protected $article = null;
     protected $category = null;
     protected $image = null;
+    protected $profileImage = null;
 
     public function __construct($dsn, $user, $pass)
     {
@@ -66,5 +68,13 @@ class CMS
             return $this->image = new Image($this->db);
         }
         return $this->image = new Image($this->db);
+    }
+
+    public function getProfileImage()
+    {
+        if ($this->profileImage === null) {
+            return $this->profileImage = new ProfileImage($this->db);
+        }
+        return $this->profileImage = new ProfileImage($this->db);
     }
 }
