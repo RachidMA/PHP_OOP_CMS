@@ -28,4 +28,32 @@ class ProfileImage
             return false;
         }
     }
+
+    //CHECK IF USER(AUTHOR AS PROFILE IMAGE)
+    public function userHasImage(int $user_id)
+    {
+        try {
+            $sql = 'SELECT path as image_path FROM profileimages WHERE user_id=:userId';
+            $image_path = $this->db->runSQL($sql, [':userId' => $user_id])->fetchColumn();
+            $saved = $this->db->runSQL($sql, [':userId' => $user_id])->rowCount() > 0 ? true : false;
+            $result['saved'] = $saved;
+            $result['image_path'] = $image_path;
+            return $result;
+        } catch (PDOException $ex) {
+            throw $ex;
+        }
+    }
+
+    //DELETE USER PROFILE IMAGE
+    public function deleteProfileImage(int $profileId)
+    {
+        try {
+            $sql = 'DELETE FROM profileimages WHERE user_id = :profileId';
+            $smt = $this->db->prepare($sql);
+            $smt->execute(["profileId" => $profileId]);
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

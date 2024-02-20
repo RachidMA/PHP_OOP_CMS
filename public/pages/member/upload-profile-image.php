@@ -7,10 +7,19 @@ require AP_ROOT_FOLDER_4 . '/src/boostrap.php';
 is_loggedIn($session->id);
 isMember($session->role);
 
+$profileImageObj = $cms->getProfileImage();
 $user_id = $session->id ?? '';
 $data = [];
 $errors = [];
 $destination = '';
+
+$authorProfileImageData = $profileImageObj->userHasImage($session->id);
+
+$authorHasProfileImage = $authorProfileImageData['saved'];
+
+
+$data['authorHasImage'] = $authorHasProfileImage;
+$data['authorImageName'] = $authorProfileImageData['image_path'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['image'])) {
@@ -54,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($image_saved) {
                     move_uploaded_file($_FILES["image"]["tmp_name"], $destination);
                     $pdo->commit();
+                    redirect('profile.php');
                 }
             } catch (PDOException $e) {
                 echo "Error: " + $e->getMessage();

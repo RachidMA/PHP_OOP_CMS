@@ -2,6 +2,22 @@
 {%block content%}
 <div class="profile-image-main">
   <div class="profile-image-form">
+    {%if(authorImageName)%}
+    <div class="image-container">
+      <img
+        src="{{doc_root}}/uploads/profile/{{authorImageName}}"
+        alt="BLOG-POST-IAMGE"
+      />
+    </div>
+    <div class="buttons">
+      <a
+        href="author-delete-profile-image.php"
+        class="delete-img"
+        value="Delete Image"
+        >Delete Image</a
+      >
+    </div>
+    {%else%}
     <form
       action="{{doc_root}}/pages/member/upload-profile-image.php"
       enctype="multipart/form-data"
@@ -20,4 +36,4 @@
     </form>
   </div>
 </div>
-{%endblock%}
+{%endif%} {%endblock%}
